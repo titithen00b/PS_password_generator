@@ -30,6 +30,8 @@ xcopy RandomPasswordModule.psm1 "C:\Program Files\WindowsPowerShell\Modules\Rand
 xcopy RandomPasswordModule.psd1 "C:\Program Files\WindowsPowerShell\Modules\RandomPasswordModule"
 start /wait powershell -command "Set-ExecutionPolicy RemoteSigned"
 start /wait powershell -noprofile -command "Import-Module RandomPasswordModule"
-start /wait powershell -command "Install-Module -Name ClipboardText -Scope CurrentUser"
+start /wait powershell -command "Install-PackageProvider -Name NuGet -Confirm:$false"
+start /wait powershell -command "Install-Module -Name ClipboardText -Confirm:$false -Force"
 echo Import-Module RandomPasswordModule >> C:\Windows\System32\WindowsPowerShell\V1.0/profile.ps1
-del RandomPasswordModule.psm1 RandomPasswordModule.psd1 RandomPasswordModule.bat
+del RandomPasswordModule.psm1 RandomPasswordModule.psd1
+
