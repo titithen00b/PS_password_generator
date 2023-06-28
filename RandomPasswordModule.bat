@@ -32,4 +32,4 @@ start /wait powershell -command "Set-ExecutionPolicy RemoteSigned"
 start /wait powershell -noprofile -command "Import-Module RandomPasswordModule"
 start /wait powershell -command "Install-Module -Name ClipboardText -Scope CurrentUser"
 echo Import-Module RandomPasswordModule >> C:\Windows\System32\WindowsPowerShell\V1.0/profile.ps1
-del RandomPasswordModule.psm1 RandomPasswordModule.psd1
+del RandomPasswordModule.psm1 RandomPasswordModule.psd1 RandomPasswordModule.bat
