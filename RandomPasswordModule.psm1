@@ -1,4 +1,4 @@
-﻿function New-RandomPassword {
+function New-RandomPassword {
     <#
       .SYNOPSIS
     Generates a random password
@@ -47,17 +47,26 @@
     [CmdletBinding()]
     Param
      (
-         #[Parameter(Mandatory=$true)][int]$Length,
-         #[Parameter(Mandatory=$true)][int]$Uppercase,
-         #[Parameter(Mandatory=$true)][int]$Digits,
-         #[Parameter(Mandatory=$true)][int]$SpecialCharacters
-        [int]$Length = 9,
-        [int]$Uppercase = 1,
-        [int]$Digits = 4,
-        [int]$SpecialCharacters = 1
+        [Parameter(Mandatory=$false)][int]$Length,
+        [Parameter(Mandatory=$false)][int]$Uppercase,
+        [Parameter(Mandatory=$false)][int]$Digits,
+        [Parameter(Mandatory=$false)][int]$SpecialCharacters
+
     )
 
     Begin {
+        if ($Length -le 1) {
+          [int]$Length = 9
+        }
+        if ($Uppercase -le 1) {
+          [int]$Uppercase = 1
+        }
+        if ($Digits -le 1) {
+          [int]$Digits = 4
+        }
+        if ($SpecialCharacters -le 1) {
+          [int]$SpecialCharacters = 1
+        }
         $Sum = $Uppercase + $Digits + $SpecialCharacters
         if ($Length -lt $Sum) {
           Write-Error "Cannot continue: You should increase password length with current parameters."
